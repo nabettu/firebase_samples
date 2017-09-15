@@ -49,4 +49,11 @@ table {
 .wrapper {
   font-family: sans-serif;
   font-size: 16px;
-  line-height: 1.5; }
+  line-height: 1.5;
+  padding-top: 1em; }
+  .wrapper h1 {
+    margin-bottom: 0.5em; }
+  .wrapper input {
+    margin-right: 1em; }
+  .wrapper .hidden {
+    display: none; }

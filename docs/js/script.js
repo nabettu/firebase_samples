@@ -271,18 +271,31 @@ var Login = function () {
                     case 'twitter':
                         provider = new firebase.auth.TwitterAuthProvider();
                         break;
+                    case 'github':
+                        provider = new firebase.auth.GithubAuthProvider();
+                        break;
+                    case 'google':
+                        provider = new firebase.auth.GoogleAuthProvider();
+                        break;
                 }
+
                 if (provider) {
-                    firebase.auth().signInWithPopup(provider).then(function (result) {
-                        _this.setUserInfo(result);
-                    });
+                    if ($('.js-popup').prop('checked')) {
+                        firebase.auth().signInWithPopup(provider).then(function (result) {
+                            _this.setUserInfo(result);
+                        });
+                    } else {
+                        firebase.auth().signInWithRedirect(provider).then(function (result) {
+                            _this.setUserInfo(result);
+                        });
+                    }
                 }
             });
             $('.js-logoutBtn').on('click', function (e) {
                 firebase.auth().signOut().then(function () {
                     _this.deleteUserInfo();
                 });
-            }).hide();
+            });
         }
     }, {
         key: 'loginCheck',
@@ -295,6 +308,7 @@ var Login = function () {
                     _this2.setUserInfo(user);
                 } else {
                     console.log("is not login");
+                    $('.js-loginParts').show();
                 }
             });
         }
@@ -308,14 +322,14 @@ var Login = function () {
             $('.js-logoutBtn').show();
             var $userInfo = $('<div>\n            <p>displayName: ' + user.displayName + '</p>\n            <p>email: ' + user.email + '</p>\n            <p>emailVerified: ' + user.emailVerified + '</p>\n            <p>phoneNumber: ' + user.phoneNumber + '</p>\n            <p>photoURL: ' + user.photoURL + '</p>\n            <img src="' + user.photoURL + '" style="width: 100px">\n            <p>now Login with ' + user.providerData[0].providerId + '</p>\n            </div>');
             $('.js-userInfo').empty().append($userInfo);
-            $('.js-loginBtn').hide();
+            $('.js-loginParts').hide();
         }
     }, {
         key: 'deleteUserInfo',
         value: function deleteUserInfo() {
             this.$infoDom.empty().text('logouted');
             $('.js-logoutBtn').hide();
-            $('.js-loginBtn').show();
+            $('.js-loginParts').show();
         }
     }]);
     return Login;
@@ -341,7 +355,6 @@ switch (bodyClassName) {
         new _Login2.default();
         break;
     default:
-
 }
 
 },{"./lib/Login":21}]},{},[22]);

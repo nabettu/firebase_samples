@@ -17,18 +17,31 @@ export default class Login {
                 case 'twitter':
                     provider = new firebase.auth.TwitterAuthProvider();
                     break;
+                case 'github':
+                    provider = new firebase.auth.GithubAuthProvider();
+                    break;
+                case 'google':
+                    provider = new firebase.auth.GoogleAuthProvider();
+                    break;
             }
+
             if (provider) {
-                firebase.auth().signInWithPopup(provider).then((result) => {
-                    this.setUserInfo(result);
-                });
+                if ($('.js-popup').prop('checked')) {
+                    firebase.auth().signInWithPopup(provider).then((result) => {
+                        this.setUserInfo(result);
+                    });
+                } else {
+                    firebase.auth().signInWithRedirect(provider).then((result) => {
+                        this.setUserInfo(result);
+                    });
+                }
             }
-        })
+        });
         $('.js-logoutBtn').on('click', e => {
             firebase.auth().signOut().then(() => {
                 this.deleteUserInfo();
             });
-        }).hide();
+        });
     }
     loginCheck() {
         firebase.auth().onAuthStateChanged((user) => {
@@ -37,6 +50,7 @@ export default class Login {
                 this.setUserInfo(user);
             } else {
                 console.log("is not login");
+                $('.js-loginParts').show();
             }
         });
     }
@@ -56,11 +70,11 @@ export default class Login {
             <p>now Login with ${user.providerData[0].providerId}</p>
             </div>`)
         $('.js-userInfo').empty().append($userInfo);
-        $('.js-loginBtn').hide();
+        $('.js-loginParts').hide();
     }
     deleteUserInfo() {
         this.$infoDom.empty().text('logouted');
         $('.js-logoutBtn').hide();
-        $('.js-loginBtn').show();
+        $('.js-loginParts').show();
     }
 };

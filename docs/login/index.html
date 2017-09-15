@@ -3,39 +3,53 @@
   <head>
     <meta charset="utf-8">
     <!-- meta-->
-    <title>login | firebase samples</title>
-    <meta name="description" content="firebase samples.">
+    <title>login | firebase samples on website</title>
+    <meta name="description" content="firebase samples on website.">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <!-- smartphone meta-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
     <!-- ogp-->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="login | firebase samples">
-    <meta property="og:site_name" content="firebase samples">
-    <meta property="og:description" content="firebase samples.">
+    <meta property="og:title" content="login | firebase samples on website">
+    <meta property="og:site_name" content="firebase samples on website">
+    <meta property="og:description" content="firebase samples on website.">
     <meta property="og:locale" content="ja_JP">
     <!-- twitter card-->
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:title" content="login | firebase samples">
-    <meta property="twitter:description" content="firebase samples.">
+    <meta property="twitter:title" content="login | firebase samples on website">
+    <meta property="twitter:description" content="firebase samples on website.">
     <!-- stylesheet-->
-    <link rel="stylesheet" href="../css/style.css?v=1">
+    <link rel="stylesheet" href="../css/style.css?v=2">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body id="login">
     <div class="wrapper container">
       <h1>OAuth Login Samples</h1>
-      <ul>
-        <li><a class="js-loginBtn" data-type="facebook" href="#">Facebook login</a></li>
-        <li><a class="js-loginBtn" data-type="twitter" href="#">Twitter login</a></li>
-      </ul>
-      <hr><a class="js-logoutBtn" href="#">Logout</a>
+      <h2>about</h2>
+      <p>you can login with any sns account through firebase.</p>
+      <p>arrow same E-mail address any account.</p>
+      <hr>
+      <div class="js-loginParts hidden">
+        <ul>
+          <li><a class="js-loginBtn" data-type="facebook" href="#">Facebook login</a></li>
+          <li><a class="js-loginBtn" data-type="twitter" href="#">Twitter login</a></li>
+          <li><a class="js-loginBtn" data-type="google" href="#">Google login</a></li>
+          <li><a class="js-loginBtn" data-type="github" href="#">Github login</a></li>
+        </ul>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="js-popup form-check-input" type="checkbox" value="">with popup (only pc).
+          </label>
+        </div>
+      </div><a class="js-logoutBtn hidden" href="#">Logout</a>
       <hr>
       <h2>information of login account</h2>
       <p class="js-userInfo">not login yet</p>
       <footer>
         <hr>
-        <p>created by <a href="https://github.com/nabettu/" target="_blank">tatsuaki watanabe</a></p>
+        <p>created by <a href="https://github.com/nabettu/" target="_blank">tatsuaki watanabe</a>.</p>
+        <p>repository is <a href="https://github.com/nabettu/firebase_samples">here</a>.</p>
+        <p><a href="/">back to top.</a></p>
       </footer>
     </div>
     <!-- javascript-->
@@ -55,6 +69,6 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script src="../js/script.js?v=1"></script>
+    <script src="../js/script.js?v=2"></script>
   </body>
 </html>

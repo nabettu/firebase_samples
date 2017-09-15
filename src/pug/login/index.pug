@@ -10,11 +10,22 @@ prepend config-block
 
 block content-block
     h1 OAuth Login Samples
-    ul
-        li: a.js-loginBtn(data-type="facebook" href="#") Facebook login
-        li: a.js-loginBtn(data-type="twitter" href="#") Twitter login
+    h2 about
+    p you can login with any sns account through firebase.
+    p arrow same E-mail address any account.
+
     hr
-    a.js-logoutBtn(href="#") Logout
+    .js-loginParts.hidden
+        ul
+            li: a.js-loginBtn(data-type="facebook" href="#") Facebook login
+            li: a.js-loginBtn(data-type="twitter" href="#") Twitter login
+            li: a.js-loginBtn(data-type="google" href="#") Google login
+            li: a.js-loginBtn(data-type="github" href="#") Github login
+        .form-check
+            label.form-check-label
+                input.js-popup.form-check-input(type="checkbox" value="")
+                | with popup (only pc).
+    a.js-logoutBtn.hidden(href="#") Logout
 
     hr
     h2 information of login account

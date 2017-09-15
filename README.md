@@ -1,19 +1,17 @@
-#firebase samples
+# Firebase Samples
 
 ## OAuth Logins
 
 /logins
 
-about auth login
+about OAuth login
 
 - Facebook
 - Twitter
 - Google
 - Github
-- email (with verification)
-- Phone Number
 
-## this repository userd
+## this repository used
 
 - [firebase](https://firebase.google.com)
 - [kayac-starter-kit](https://github.com/kayac/kayac-html5-starterpreview)

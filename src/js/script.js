@@ -8,5 +8,4 @@ switch (bodyClassName) {
         new Login;
         break;
     default:
-
 }
