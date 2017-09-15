@@ -1,0 +1,21 @@
+extends /layout/_default-layout
+
+prepend config-block
+    - page_name = 'login'
+    - page_id = 'login'
+
+//- append stylesheet-block
+
+//- append javascript-block
+
+block content-block
+    h1 OAuth Login Samples
+    ul
+        li: a.js-loginBtn(data-type="facebook" href="#") Facebook login
+        li: a.js-loginBtn(data-type="twitter" href="#") Twitter login
+    hr
+    a.js-logoutBtn(href="#") Logout
+
+    hr
+    h2 information of login account
+    p.js-userInfo not login yet
