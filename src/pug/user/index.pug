@@ -1,0 +1,27 @@
+extends /layout/_default-layout
+
+prepend config-block
+    - page_name = 'user'
+    - page_id = 'user'
+
+//- append stylesheet-block
+
+//- append javascript-block
+
+block content-block
+    h1 User Data from DB
+    h2 about
+    p display your data from database.
+
+    hr
+    .js-isUser.hidden
+        p.js-name
+        p.js-desc
+        img.js-photo(style="width: 100px;")
+    .js-isNotUser.hidden
+        p user not found
+
+    hr
+    ul.js-isLogin.hidden
+        //- li: a(href="#editModal") Your User Data Edit
+        li: a.js-logoutBtn(href="#") Logout

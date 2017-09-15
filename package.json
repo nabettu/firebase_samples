@@ -47,5 +47,8 @@
     "plugins": [
       "transform-runtime"
     ]
+  },
+  "dependencies": {
+    "query-string": "^5.0.0"
   }
 }

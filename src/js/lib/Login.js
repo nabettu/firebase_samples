@@ -55,7 +55,7 @@ export default class Login {
         });
     }
     setUserInfo(user) {
-        console.log(user.providerData);
+        console.log(user);
         if (!user.providerData) {
             return false;
         }
@@ -63,14 +63,31 @@ export default class Login {
         const $userInfo = $(`<div>
             <p>displayName: ${user.displayName}</p>
             <p>email: ${user.email}</p>
-            <p>emailVerified: ${user.emailVerified}</p>
             <p>phoneNumber: ${user.phoneNumber}</p>
             <p>photoURL: ${user.photoURL}</p>
-            <img src="${user.photoURL}" style="width: 100px">
-            <p>now Login with ${user.providerData[0].providerId}</p>
+            <img src="${user.photoURL}" style="width: 100px; height: 100px;">
+            <p>Login with ${user.providerData[0].providerId}</p>
+            <p>your user page is
+            <a href="../user/?id=${user.uid}">here</a>.
+            </p>
             </div>`)
         $('.js-userInfo').empty().append($userInfo);
         $('.js-loginParts').hide();
+
+        const firebaseDB = firebase.database().ref(`users/${user.uid}`)
+
+        firebaseDB
+            .once('value')
+            .then((res)=>{
+                console.log(res.val());
+                if(!res.val()){
+                    firebaseDB.set({
+                        name: user.displayName,
+                        photoURL: user.photoURL,
+                        description: 'this is initial description.'
+                    })
+                }
+            })
     }
     deleteUserInfo() {
         this.$infoDom.empty().text('logouted');

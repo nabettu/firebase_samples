@@ -1453,6 +1453,10 @@ decamelize@^1.0.0, decamelize@^1.1.1, decamelize@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
+decode-uri-component@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
+
 deep-extend@~0.3.0:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.3.3.tgz#2e8adfe69ed580ea019ce2efa9fa5f5106ea39c7"
@@ -4082,6 +4086,14 @@ query-string@^2.4.0:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-2.4.2.tgz#7db0666420804baa92ae9f268962855a76143dfb"
   dependencies:
+    strict-uri-encode "^1.0.0"
+
+query-string@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-5.0.0.tgz#fbdf7004b4d2aff792f9871981b7a2794f555947"
+  dependencies:
+    decode-uri-component "^0.2.0"
+    object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
 querystring-es3@~0.2.0:
