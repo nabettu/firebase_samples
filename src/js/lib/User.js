@@ -20,7 +20,26 @@ export default class User {
                 photoURL: $('.js-photo').attr('src'),
                 description: $('.js-descinput').val()
             })
-        })
+        });
+        $('.js-share').on('click', e => {
+            const snstype = e.target.dataset.type;
+            console.log(e);
+            const url = location.origin + '/share/?id=' + params.id;
+            let shareUrl;
+            switch (snstype) {
+                case "twitter":
+                    const share_text = `firebase samples test tweet.
+change ogp data only firebase.
+`;
+                    shareUrl = "https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(share_text);
+                    break;
+                case "facebook":
+                    shareUrl = "http://www.facebook.com/share.php?u=" + encodeURIComponent(url);
+                    break;
+            }
+            console.log(shareUrl);
+            window.open(shareUrl);
+        });
     }
     idCheck() {
         const firebaseDB = firebase.database().ref(`users/${params.id}`)

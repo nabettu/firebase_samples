@@ -806,6 +806,23 @@ var User = function () {
                     description: $('.js-descinput').val()
                 });
             });
+            $('.js-share').on('click', function (e) {
+                var snstype = e.target.dataset.type;
+                console.log(e);
+                var url = location.origin + '/share/?id=' + params.id;
+                var shareUrl = void 0;
+                switch (snstype) {
+                    case "twitter":
+                        var share_text = 'firebase samples test tweet.\nchange ogp data only firebase.\n';
+                        shareUrl = "https://twitter.com/share?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(share_text);
+                        break;
+                    case "facebook":
+                        shareUrl = "http://www.facebook.com/share.php?u=" + encodeURIComponent(url);
+                        break;
+                }
+                console.log(shareUrl);
+                window.open(shareUrl);
+            });
         }
     }, {
         key: 'idCheck',
