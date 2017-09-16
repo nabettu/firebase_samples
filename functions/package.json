@@ -1,0 +1,9 @@
+{
+  "name": "share-functions",
+  "description": "only ogp data page response.",
+  "dependencies": {
+    "firebase-admin": "^4.2.1",
+    "firebase-functions": "^0.5.5",
+    "fs": "^0.0.1-security"
+  }
+}

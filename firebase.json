@@ -1,5 +1,9 @@
 {
-  "hosting": {
-    "public": "docs"
-  }
+    "hosting": {
+        "public": "docs",
+        "rewrites": [{
+            "source": "/share",
+            "function": "share"
+        }]
+    }
 }
