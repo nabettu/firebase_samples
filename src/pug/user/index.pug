@@ -11,7 +11,8 @@ prepend config-block
 block content-block
     h1 User Data from DB
     h2 about
-    p display your data from database.
+    p display user data from database.
+    p if you login, you can edit your data.
 
     hr
     .js-isUser.hidden
@@ -19,9 +20,35 @@ block content-block
         p.js-desc
         img.js-photo(style="width: 100px;")
     .js-isNotUser.hidden
-        p user not found
-
+        p wrong user id at URL parameters.
+        p please go to correct URL or login from 
+            a(href="../login/") here
+            | .
+        
     hr
     ul.js-isLogin.hidden
-        //- li: a(href="#editModal") Your User Data Edit
+        li: a(data-toggle="modal" data-target="#editModal" href="#editModal") Your User Data Edit
         li: a.js-logoutBtn(href="#") Logout
+        
+    ul.js-isNotLogin.hidden
+        p if you wanna edit your profie, after login from 
+            a(href="../login/") here
+            | .
+        
+    .modal.fade#editModal(aria-hidden="true")
+        .modal-dialog(role="document")
+            .modal-content
+                .modal-header
+                    h5.modal-title edit your data
+                    button.close(type="button" data-dismiss="modal" aria-label="Close")
+                        span(aria-hidden="true").
+                            &times
+                .modal-body
+                    label
+                        | name: 
+                        input.js-nameinput(type="text" value="")
+                    label
+                        | description: 
+                        input.js-descinput(type="text" value="")
+                .modal-footer
+                    button.js-submit(type="button" class="btn btn-primary" data-dismiss="modal") Save changes

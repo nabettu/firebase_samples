@@ -13,6 +13,14 @@ export default class User {
                 this.deleteUserInfo();
             });
         });
+        $('.js-submit').on('click', e => {
+            const firebaseDB = firebase.database().ref(`users/${params.id}`)
+            firebaseDB.set({
+                name: $('.js-nameinput').val(),
+                photoURL: $('.js-photo').attr('src'),
+                description: $('.js-descinput').val()
+            })
+        })
     }
     idCheck() {
         const firebaseDB = firebase.database().ref(`users/${params.id}`)
@@ -21,8 +29,11 @@ export default class User {
             if (res.val()) {
                 $('.js-isNotUser').hide();
                 $('.js-isUser').show();
-                this.setUserInfo(res.val());
                 this.loginCheck();
+                // this.setUserInfo(res.val());
+                firebaseDB.on('value', (res) => {
+                    this.setUserInfo(res.val());
+                })
             } else {
                 $('.js-isUser').hide();
                 $('.js-isNotUser').show();
@@ -46,6 +57,9 @@ export default class User {
         $('.js-name').text(user.name);
         $('.js-desc').text(user.description);
         $('.js-photo').attr('src', user.photoURL);
+
+        $('.js-nameinput').val(user.name);
+        $('.js-descinput').val(user.description);
     }
     deleteUserInfo() {
         $('.js-isNotLogin').show();

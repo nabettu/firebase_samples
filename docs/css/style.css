@@ -57,3 +57,6 @@ table {
     margin-right: 1em; }
   .wrapper .hidden {
     display: none; }
+  .wrapper .modal-content {
+    max-width: 80%;
+    margin: 10% auto 0; }

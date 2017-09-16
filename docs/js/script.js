@@ -798,6 +798,14 @@ var User = function () {
                     _this.deleteUserInfo();
                 });
             });
+            $('.js-submit').on('click', function (e) {
+                var firebaseDB = firebase.database().ref('users/' + params.id);
+                firebaseDB.set({
+                    name: $('.js-nameinput').val(),
+                    photoURL: $('.js-photo').attr('src'),
+                    description: $('.js-descinput').val()
+                });
+            });
         }
     }, {
         key: 'idCheck',
@@ -810,8 +818,11 @@ var User = function () {
                 if (res.val()) {
                     $('.js-isNotUser').hide();
                     $('.js-isUser').show();
-                    _this2.setUserInfo(res.val());
                     _this2.loginCheck();
+                    // this.setUserInfo(res.val());
+                    firebaseDB.on('value', function (res) {
+                        _this2.setUserInfo(res.val());
+                    });
                 } else {
                     $('.js-isUser').hide();
                     $('.js-isNotUser').show();
@@ -838,6 +849,9 @@ var User = function () {
             $('.js-name').text(user.name);
             $('.js-desc').text(user.description);
             $('.js-photo').attr('src', user.photoURL);
+
+            $('.js-nameinput').val(user.name);
+            $('.js-descinput').val(user.description);
         }
     }, {
         key: 'deleteUserInfo',

@@ -19,26 +19,53 @@
     <meta property="twitter:title" content="user | firebase samples on website">
     <meta property="twitter:description" content="firebase samples on website.">
     <!-- stylesheet-->
-    <link rel="stylesheet" href="../css/style.css?v=2">
+    <link rel="stylesheet" href="../css/style.css?v=3">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
   </head>
   <body id="user">
     <div class="wrapper container">
       <h1>User Data from DB</h1>
       <h2>about</h2>
-      <p>display your data from database.</p>
+      <p>display user data from database.</p>
+      <p>if you login, you can edit your data.</p>
       <hr>
       <div class="js-isUser hidden">
         <p class="js-name"></p>
         <p class="js-desc"></p><img class="js-photo" style="width: 100px;">
       </div>
       <div class="js-isNotUser hidden">
-        <p>user not found</p>
+        <p>wrong user id at URL parameters.</p>
+        <p>please go to correct URL or login from <a href="../login/">here</a>.</p>
       </div>
       <hr>
       <ul class="js-isLogin hidden">
+        <li><a data-toggle="modal" data-target="#editModal" href="#editModal">Your User Data Edit</a></li>
         <li><a class="js-logoutBtn" href="#">Logout</a></li>
       </ul>
+      <ul class="js-isNotLogin hidden">
+        <p>if you wanna edit your profie, after login from <a href="../login/">here</a>.</p>
+      </ul>
+      <div class="modal fade" id="editModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">edit your data</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times</span></button>
+            </div>
+            <div class="modal-body">
+              <label>name: 
+                <input class="js-nameinput" type="text" value="">
+              </label>
+              <label>description: 
+                <input class="js-descinput" type="text" value="">
+              </label>
+            </div>
+            <div class="modal-footer">
+              <button class="js-submit btn btn-primary" type="button" data-dismiss="modal">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
       <footer>
         <hr>
         <p>created by <a href="https://github.com/nabettu/" target="_blank">tatsuaki watanabe</a>.</p>
@@ -63,6 +90,6 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script src="../js/script.js?v=3"></script>
+    <script src="../js/script.js?v=4"></script>
   </body>
 </html>
