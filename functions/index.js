@@ -7,17 +7,17 @@ admin.initializeApp(functions.config().firebase);
 const fs = require("fs");
 
 exports.share = functions.https.onRequest((req, res) => {
-    res.set('Cache-Control', 'public, max-age=300, s-maxage=600');
+    res.set('Cache-Control', 'public, max-age=0, s-maxage=0');
     res.set('Vary', 'Accept-Encoding, X-My-Custom-Header');
 
     const id = req.query.id;
-    const domain = req.protocol + '://' + req.headers.host;
+    const domain = 'https://nabettu-firebase-sample.firebaseapp.com';
 
     let title = 'firebase samples';
     let description = 'firebase samples on website';
-    let shareUrl = 'https://nabettu-firebase-sample.firebaseapp.com';
+    let shareUrl = domain;
     let ogpImage = '';
-    let redirectUrl = shareUrl;
+    let redirectUrl = domain;
 
     admin
         .database()

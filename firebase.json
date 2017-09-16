@@ -2,7 +2,7 @@
     "hosting": {
         "public": "docs",
         "rewrites": [{
-            "source": "/share",
+            "source": "/share*",
             "function": "share"
         }]
     }
