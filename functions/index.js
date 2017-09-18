@@ -5,6 +5,7 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 const fs = require("fs");
+const xss = require('xss');
 
 exports.share = functions.https.onRequest((req, res) => {
     res.set('Cache-Control', 'public, max-age=0, s-maxage=0');
@@ -34,11 +35,11 @@ exports.share = functions.https.onRequest((req, res) => {
             }
             const templeteHtml = fs.readFileSync('./templete.html', 'UTF-8');
             const responseHtml = templeteHtml
-                .replace(/\$title/g, title)
-                .replace(/\$description/g, description)
-                .replace(/\$shareUrl/g, shareUrl)
-                .replace(/\$ogpImage/g, ogpImage)
-                .replace(/\$redirectUrl/g, redirectUrl);
+                .replace(/\$title/g, xss(title))
+                .replace(/\$description/g, xss(description))
+                .replace(/\$shareUrl/g, xss(shareUrl))
+                .replace(/\$ogpImage/g, xss(ogpImage))
+                .replace(/\$redirectUrl/g, xss(redirectUrl));
             res.status(200).send(responseHtml);
         });
 });
