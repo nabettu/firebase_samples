@@ -35,11 +35,11 @@ exports.share = functions.https.onRequest((req, res) => {
             }
             const templeteHtml = fs.readFileSync('./templete.html', 'UTF-8');
             const responseHtml = templeteHtml
-                .replace(/\$title/g, xss(title))
-                .replace(/\$description/g, xss(description))
-                .replace(/\$shareUrl/g, xss(shareUrl))
-                .replace(/\$ogpImage/g, xss(ogpImage))
-                .replace(/\$redirectUrl/g, xss(redirectUrl));
+                .replace(/\$title/g, xss(title).replace(/\"|\'/g, ''))
+                .replace(/\$description/g, xss(description).replace(/\"|\'/g, ''))
+                .replace(/\$shareUrl/g, xss(shareUrl).replace(/\"|\'/g, ''))
+                .replace(/\$ogpImage/g, xss(ogpImage).replace(/\"|\'/g, ''))
+                .replace(/\$redirectUrl/g, xss(redirectUrl).replace(/\"|\'/g, ''));
             res.status(200).send(responseHtml);
         });
 });
